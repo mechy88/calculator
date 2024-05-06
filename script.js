@@ -84,28 +84,35 @@ function multiply(a, b){
 }
 
 function divide(a, b){
+    if(b == 0){
+        throw "Cannot divide by 0"
+    }
+
     return a / b;
 }
 
 function operate(a, b, operator){
+    try{
+        a = parseFloat(a);
+        b = parseFloat(b);
 
-    a = parseFloat(a);
-    b = parseFloat(b);
-
-    switch(operator){
-        case '+':
-            return add(a, b);
-            break;
-        case '-':
-            return subtract(a, b);
-            break;
-        case '×':
-            return multiply(a, b);
-            break;
-        case '÷':
-            return divide(a, b);
-            break;
-        default:
-            return 'error';
+        switch(operator){
+            case '+':
+                return add(a, b);
+                break;
+            case '-':
+                return subtract(a, b);
+                break;
+            case '×':
+                return multiply(a, b);
+                break;
+            case '÷':
+                return divide(a, b);
+                break;
+            default:
+                return 'error';
+        }
+    } catch(e){
+        return 'error';
     }
 }
